@@ -1,0 +1,8 @@
+{
+  "boss"    : true,
+  "es5"     : true,
+
+  "globals" : {
+    "$" : false,
+  }
+}
