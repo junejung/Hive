@@ -1,0 +1,27 @@
+{
+  "name": "PLACEHOLDER",
+  "description": "PLACEHOLDER",
+  "homepage": "PLACEHOLDER",
+  "version": "0.0.1",
+  "engines": {
+    "node": "0.8.x",
+    "npm": "1.1.x"
+  },
+  "author": {
+    "name": "PLACEHOLDER",
+    "email": "PLACEHOLDER"
+  },
+  "repository": {
+    "type": "git",
+    "url": "PLACEHOLDER"
+  },
+  "dependencies": {
+    "socket.io": "~0.9.13",
+    "requirejs": "~2.1.4",
+    "express": "~3.1.0",
+    "jade": "~0.28.1"
+  },
+  "devDependencies": {
+    "buster": "~0.6.12"
+  }
+}

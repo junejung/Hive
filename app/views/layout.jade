@@ -1,0 +1,26 @@
+doctype 5
+html
+  head
+    title=title
+    meta(name='description', content='')
+    meta(name='author', content='')
+    meta(name='charset', content='utf-8')
+    meta(name='viewport', content='width=device-width')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+    link(rel='stylesheet', href='/css/normalize.css')
+    link(rel='stylesheet', href='/css/styles.css')
+    link(rel='shortcut icon', href='img/favicon.ico')
+    link(rel='apple-touch-icon', href='img/apple-touch-icon.png')
+    link(rel='apple-touch-icon', sizes='72x72', href='img/apple-touch-icon-72x72.png')
+    link(rel='apple-touch-icon', sizes='114x114', href='img/apple-touch-icon-114x114.png')
+    // if lt IE 9
+      script(src='http://html5shim.googlecode.com/svn/trunk/html5.js')
+  body
+    // [if lt IE 8]>
+      p.chromeframe
+        This site won't perform well in your version of Internet Explorer. <a href='http://browsehappy.com/'>Upgrade to a different browser</a> or <a href='http://www.google.com/chromeframe/?redirect=true'>install Google Chrome Frame</a> to use this site.
+      block navbar
+    block content
+    script(src='js/vendor/modernizr-2.6.2.min.js')
+    script(data-main='main', src='js/main.js')
+

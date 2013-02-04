@@ -1,0 +1,32 @@
+# Project-Specific #
+####################
+# Put project-specific gitignores here
+
+
+# General #
+###########
+
+# OS X
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+# SublimeText
+*.sublime-workspace
+
+# Vim
+.*.s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
+
+# SASS
+.sass-cache
+
+# Node
+node_modules
