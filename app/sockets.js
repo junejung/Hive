@@ -11,5 +11,5 @@ define(['socket.io'], function(socket){
     });
 
     return io;
-  }
+  };
 });
