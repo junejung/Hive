@@ -30,7 +30,7 @@
     "grunt": "~0.4.0",
     "grunt-contrib-jshint": "0.1.1rc6",
     "grunt-contrib-requirejs": "~0.3.4",
-    "grunt-buster": "~0.1.2",
+    "grunt-plugin-buster": "~2.0.0",
     "grunt-contrib-watch": "0.2.0rc7"
   }
 }

@@ -44,8 +44,11 @@ module.exports = function(grunt) {
     },
 
     buster: {
-      test: {
-        config: 'test/buster.js'
+      // Only need to specify the name of each test group here. Test groups can
+      // be found in spec/buster.js.
+      app: {},
+      options: {
+        config: 'spec/buster.js'
       }
     },
 
@@ -73,13 +76,15 @@ module.exports = function(grunt) {
 
   // Load third-party modules
   grunt.loadNpmTasks('grunt-contrib-requirejs');
-  grunt.loadNpmTasks('grunt-buster');
+  grunt.loadNpmTasks('grunt-plugin-buster');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   // Define tasks
   grunt.registerTask('dev', ['jshint:all']);
   grunt.registerTask('dist', ['jshint:dist']);
+  // Add jobs here that should run before each commit
+  grunt.registerTask('precommit', ['jshint:all', 'buster:app']);
 
   // Define default task
   grunt.registerTask('default', ['dev']);
