@@ -1,19 +1,23 @@
 {
-  "name": "PLACEHOLDER",
-  "description": "PLACEHOLDER",
-  "homepage": "PLACEHOLDER",
+  "name": "Hive.js",
+  "description": "HTML5 version of the popular tile-based strategy game",
   "version": "0.0.1",
   "engines": {
     "node": "0.8.x",
     "npm": "1.1.x"
   },
   "author": {
-    "name": "PLACEHOLDER",
-    "email": "PLACEHOLDER"
+    "name": "June Jung",
+    "email": "jeongjueun@gmail.com"
   },
+  "contributors": [
+    "Nathan Houle <nathan@nathanhoule.com>",
+    "CJ Winslow <whoaa512@gmail.com>",
+    "JP Whitaker <jpw@hawaii.edu>"
+  ],
   "repository": {
     "type": "git",
-    "url": "PLACEHOLDER"
+    "url": "https://github.com/junejung/Hive"
   },
   "dependencies": {
     "socket.io": "~0.9.13",
@@ -22,6 +26,11 @@
     "jade": "~0.28.1"
   },
   "devDependencies": {
-    "buster": "~0.6.12"
+    "buster": "~0.6.12",
+    "grunt": "~0.4.0",
+    "grunt-contrib-jshint": "0.1.1rc6",
+    "grunt-contrib-requirejs": "~0.3.4",
+    "grunt-plugin-buster": "~2.0.0",
+    "grunt-contrib-watch": "0.2.0rc7"
   }
 }
