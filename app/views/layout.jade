@@ -19,8 +19,11 @@ html
     // [if lt IE 8]>
       p.chromeframe
         This site won't perform well in your version of Internet Explorer. <a href='http://browsehappy.com/'>Upgrade to a different browser</a> or <a href='http://www.google.com/chromeframe/?redirect=true'>install Google Chrome Frame</a> to use this site.
-      block navbar
-    block content
-    script(src='js/vendor/modernizr-2.6.2.min.js')
-    script(data-main='main', src='js/main.js')
 
+    block content
+      // Content goes here
+
+    // Put JavaCrips here
+    script(src='js/vendor/modernizr-2.6.2.min.js')
+    script(src='js/require-config.js')
+    script(data-main='main', src='js/vendor/require-jquery.min.js')
