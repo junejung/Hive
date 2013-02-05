@@ -53,6 +53,7 @@ requirejs(['buster', 'Bug', 'Queen'], function(buster, Bug, Queen) {
 
   });
 
+
   describe('Spider Class', function() {
     var whiteSpider1;
     before(function() {
@@ -71,6 +72,7 @@ requirejs(['buster', 'Bug', 'Queen'], function(buster, Bug, Queen) {
     });
 
   });
+
 
   describe('Beetle Class', function() {
     var whiteBeetle1;
@@ -95,6 +97,7 @@ requirejs(['buster', 'Bug', 'Queen'], function(buster, Bug, Queen) {
 
   });
 
+
   describe('Grasshopper Class', function() {
     var whiteGrasshopper1;
     before(function() {
@@ -113,6 +116,7 @@ requirejs(['buster', 'Bug', 'Queen'], function(buster, Bug, Queen) {
     });
 
   });
+
 
   describe('Soldier Class', function() {
     var whiteSoldier1;
