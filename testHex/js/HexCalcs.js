@@ -51,7 +51,7 @@ function getHexGridWH()
 
 function changeOrientation()
 {
-	if(document.getElementById("hexOrientationNormal").checked)
+	
 		HT.Hexagon.Static.ORIENTATION = HT.Hexagon.Orientation.Rotated;
 	
 	drawHexGrid();
@@ -85,7 +85,7 @@ hexCanvas.addEventListener("click", hexOnClick, false);
 
 function hexOnClick(e) {
     var cell = getCursorPosition(e);
-    console.log(cell);
+    
 }
 
 function getCursorPosition(e) {
@@ -102,4 +102,6 @@ function getCursorPosition(e) {
            document.documentElement.scrollTop;
     }
     console.log(x,y)
+    globalPoint = new HT.Point(x,y)
+    console.log(grid.GetHexAt(globalPoint).Id)
 }
