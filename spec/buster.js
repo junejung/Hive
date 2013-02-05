@@ -1,6 +1,6 @@
 var config = module.exports;
 
-config["Tests"] = {
+config["app"] = {
   env: "node",
-  tests: ["**/*Spec.js"]
+  tests: ["specs/**/*Spec.js"]
 };
