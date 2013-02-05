@@ -99,7 +99,7 @@ HT.Hexagon.prototype.draw = function(ctx) {
 	if(this.Id)
 	{
 		//draw text for debugging
-		ctx.fillStyle = "black"
+		ctx.fillStyle = "black";
 		ctx.font = "bolder 8pt Trebuchet MS,Tahoma,Verdana,Arial,sans-serif";
 		ctx.textAlign = "center";
 		ctx.textBaseline = 'middle';
@@ -110,7 +110,7 @@ HT.Hexagon.prototype.draw = function(ctx) {
 	if(this.PathCoOrdX !== null && this.PathCoOrdY !== null && typeof(this.PathCoOrdX) != "undefined" && typeof(this.PathCoOrdY) != "undefined")
 	{
 		//draw co-ordinates for debugging
-		ctx.fillStyle = "black"
+		ctx.fillStyle = "black";
 		ctx.font = "bolder 8pt Trebuchet MS,Tahoma,Verdana,Arial,sans-serif";
 		ctx.textAlign = "center";
 		ctx.textBaseline = 'middle';
@@ -130,7 +130,7 @@ HT.Hexagon.prototype.draw = function(ctx) {
 		ctx.closePath();
 		ctx.stroke();
 		
-		ctx.fillStyle = "black"
+		ctx.fillStyle = "black";
 		ctx.font = "bolder 8pt Trebuchet MS,Tahoma,Verdana,Arial,sans-serif";
 		ctx.textAlign = "left";
 		ctx.textBaseline = 'middle';
@@ -209,10 +209,10 @@ HT.Hexagon.Orientation = {
 	Rotated: 1
 };
 
-HT.Hexagon.Static = {HEIGHT:91.14378277661477
-					, WIDTH:91.14378277661477
-					, SIDE:50.0
-					, ORIENTATION:HT.Hexagon.Orientation.Normal
-					, DRAWSTATS: false};//hexagons will have 25 unit sides for now
+HT.Hexagon.Static = {HEIGHT:91.14378277661477,
+					WIDTH:91.14378277661477,
+					SIDE:50.0,
+					ORIENTATION:HT.Hexagon.Orientation.Normal,
+					DRAWSTATS: false};//hexagons will have 25 unit sides for now
 
 
