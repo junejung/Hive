@@ -1,11 +1,12 @@
 define(function(require) {
   var Bug = require('Bug');
 
-  var Beetle = function(){
+  var Queen = function(type){
     Bug.call(this);
+    this.id = [type];
     this.movementCalculator = function(){};
   };
-  Beetle.prototype = Object.create(Bug.prototype);
+  Queen.prototype = Object.create(Bug.prototype);
 
-  return Beetle;
+  return Queen;
 });
