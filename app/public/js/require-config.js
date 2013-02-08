@@ -17,7 +17,6 @@ var require = {
     underscore : 'vendor/lodash-1.0.0r3.min',
     backbone   : 'vendor/backbone-amd-0.9.10-min',
     Hive       : 'models/Hive',
-    Bug        : 'models/Bug',
     Queen      : 'models/Queen',
     Soldier    : 'models/Soldier',
     Spider     : 'models/Spider',

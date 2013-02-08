@@ -2,27 +2,16 @@ var requirejs = require("requirejs");
 // Path to serverside config
 requirejs.config(require("../../app/public/js/tests-config"));
 
-requirejs(['buster'], function(buster) {
+requirejs(['buster','Hive'], function(buster, Hive) {
   // Set up BDD-style expectations
   var expect = buster.assertions.expect;
   buster.spec.expose();
 
-  // describe('Queen Class', function() {
-  //   var whiteQueen;
-  //   before(function() {
-  //     whiteQueen = new Queen("light");
-  //   });
+  describe('Hive Class', function() {
 
-  //   it('should have all the properties of a Bug', function() {
-  //     expect(typeof whiteQueen.currentPosition).toEqual("object");
-  //     expect(typeof whiteQueen.getCurrentPosition).toEqual("function");
-  //   });
+    it('should be an Object', function() {
+      expect(typeof Hive).toEqual("object");
+    });
 
-  //   describe('movementCalculator',function(){
-  //     itEventually('Queen Bee should move only 1 space at a time', function() {
-  //       expect().toBe();
-  //     });
-  //   });
-
-  // });
+  });
 });

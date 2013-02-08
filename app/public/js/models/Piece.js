@@ -1,32 +1,30 @@
-define(function(require) {
-  var Hive = require('Hive');
-  var _ = require('underscore');
+define(['Hive', 'underscore'], function(Hive, _) {
 
   Hive.Piece = function(property){
     this.neighbors = [];
     this.resetNeibors();
 
     if(property.neighbors){
-      this.neighbors = options.neighbors.slice(0);
+      this.neighbors = property.neighbors.slice(0);
     }
 
     if(property.name){
-      this.name = options.name;
+      this.name = property.name;
     }
   };
 
   var compliment = function(side) {
 
-    if (side == ABOVE){return BELOW;} // top of another piece
+    if (side == ABOVE){ return BELOW; } // top of another piece
 
-    if (side == BELOW){return ABOVE;} // under another piece
+    if (side == BELOW){ return ABOVE; } // under another piece
 
-    if (side >= 3){return side - 3;}
+    if (side >= 3){ return side - 3; }
 
     return side + 3;
   };
 
-  Hive.Piece.prototype = new Backbone.models();
+  Hive.Piece.prototype = new Backbone.Model();
 
   Hive.Piece.prototype.type = 'Piece';
 
@@ -34,18 +32,19 @@ define(function(require) {
   Hive.Piece.prototype.toString = function(){ return this.name+ ' ('+this.type+')'; };
 
   Hive.Piece.prototype.resetNeibors = function(side){
-    this.neighbors[0] = null; //-> N
-    this.neighbors[1] = null; //-> NE
-    this.neighbors[2] = null; //-> SE
-    this.neighbors[3] = null; //-> S
-    this.neighbors[4] = null; //-> SW
-    this.neighbors[5] = null; //-> NW
-    this.neighbors[6] = null; //-> ABOVE
-    this.neighbors[7] = null; //-> BELOW
+    this.neighbors[0] = null; // -> N
+    this.neighbors[1] = null; // -> NE
+    this.neighbors[2] = null; // -> SE
+    this.neighbors[3] = null; // -> S
+    this.neighbors[4] = null; // -> SW
+    this.neighbors[5] = null; // -> NW
+    this.neighbors[6] = null; // -> ABOVE
+    this.neighbors[7] = null; // -> BELOW
   };
 
   Hive.Piece.prototype.connectToNeighbor = function(neighbor, side){
     var allNeighbors = this.neighbors;
+
     _.each(allNeighbors, function(neighbor, s){
       if(neighbor !== null){
         neighbor.neighbors[compliment(s)] = null;
@@ -67,6 +66,7 @@ define(function(require) {
     }
 
     this.copyNeighbors(neighbor, side);
+
   };
 
   Hive.Piece.prototype.copyNeighbors = function(){
