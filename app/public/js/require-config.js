@@ -17,8 +17,10 @@ var require = {
     jquery     : 'vendor/require-jquery.min',
     backbone   : 'vendor/backbone-amd-0.9.10-min',
     Hive       : 'models/Hive',
+    Piece      : 'models/Piece',
+    GhostPiece : 'models/GhostPiece',
     Queen      : 'models/Queen',
-    Soldier    : 'models/Soldier',
+    Ant        : 'models/Ant',
     Spider     : 'models/Spider',
     Grasshopper: 'models/Grasshopper',
     Beetle     : 'models/Beetle'

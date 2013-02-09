@@ -6,10 +6,10 @@ define(function(require) {
     Piece.apply(this, arguments);
   };
 
-  Piece.GhostPiece.prototype = Object.create(Piece.prototype);
+  GhostPiece.prototype = Object.create(Piece.prototype);
 
-  Piece.GhostPiece.prototype.type = null;
+  GhostPiece.prototype.type = null;
   // takes place of null
 
-  return Piece.GhostPiece;
+  return GhostPiece;
 });

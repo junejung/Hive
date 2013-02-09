@@ -1,4 +1,7 @@
-define(['Hive', 'underscore'], function(Hive, _) {
+define(function(require) {
+  var Hive     = require('Hive'),
+      _        = require('underscore');
+
 
   Hive.Piece = function(property){
     this.neighbors = [];
@@ -57,13 +60,13 @@ define(['Hive', 'underscore'], function(Hive, _) {
   Hive.Piece.prototype.resetNeighbors = function(side){
     var self = this;
     if (this.type !== null) {
-      this.neighbors[0] = new Hive.Piece.GhostPiece({neighbors:[null, null, null, self, null, null, null, null]}); // -> N
-      this.neighbors[1] = new Hive.Piece.GhostPiece({neighbors:[null, null, null, null, self, null, null, null]}); // -> NE
-      this.neighbors[2] = new Hive.Piece.GhostPiece({neighbors:[null, null, null, null, null, self, null, null]}); // -> SE
-      this.neighbors[3] = new Hive.Piece.GhostPiece({neighbors:[self, null, null, null, null, null, null, null]}); // -> S
-      this.neighbors[4] = new Hive.Piece.GhostPiece({neighbors:[null, self, null, null, null, null, null, null]}); // -> SW
-      this.neighbors[5] = new Hive.Piece.GhostPiece({neighbors:[null, null, self, null, null, null, null, null]}); // -> NW
-      this.neighbors[6] = new Hive.Piece.GhostPiece(); // -> ABOVE
+      this.neighbors[0] = null; // -> N
+      this.neighbors[1] = null; // -> NE
+      this.neighbors[2] = null; // -> SE
+      this.neighbors[3] = null; // -> S
+      this.neighbors[4] = null; // -> SW
+      this.neighbors[5] = null; // -> NW
+      this.neighbors[6] = null; // -> ABOVE
       this.neighbors[7] = null; // -> BELOW
     }
   };
@@ -75,7 +78,7 @@ define(['Hive', 'underscore'], function(Hive, _) {
     // Use neuralizer! on previous neighbors
     _.each(allNeighbors, function(neighbor, s){
       if(neighbor.type !== null){
-        neighbor.neighbors[compliment(s)] = new Hive.Piece.GhostPiece();
+        neighbor.neighbors[compliment(s)] = null;
       }
     });
 

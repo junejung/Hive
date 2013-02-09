@@ -36,5 +36,5 @@ define(function(require) {
     return validDirections;
   };
 
-  return Piece.Beetle;
+  return Beetle;
 });
