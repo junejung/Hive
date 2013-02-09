@@ -2,7 +2,7 @@ define(['Hive', 'underscore'], function(Hive, _) {
 
   Hive.Piece = function(property){
     this.neighbors = [];
-    this.resetNeibors();
+    this.resetNeighbors();
 
     if(property.neighbors){
       this.neighbors = property.neighbors.slice(0);
@@ -31,7 +31,7 @@ define(['Hive', 'underscore'], function(Hive, _) {
   //TODO: chagne the formet.. do we even want to have name?
   Hive.Piece.prototype.toString = function(){ return this.name+ ' ('+this.type+')'; };
 
-  Hive.Piece.prototype.resetNeibors = function(side){
+  Hive.Piece.prototype.resetNeighbors = function(side){
     this.neighbors[0] = null; // -> N
     this.neighbors[1] = null; // -> NE
     this.neighbors[2] = null; // -> SE
