@@ -27,6 +27,7 @@ define(['Piece'], function(Piece) {
 
     // Otherwise, we're clear
     return true;
+
   };
 
   Piece.QueenBee.prototype.possibleMoves = function() {
@@ -60,4 +61,5 @@ define(['Piece'], function(Piece) {
   };
 
   return Piece.QueenBee;
+
 });
