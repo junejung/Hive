@@ -104,6 +104,31 @@ define(['Hive', 'underscore'], function(Hive, _) {
     }
   };
 
+  Hive.Piece.prototype.traverse = function(piece, callback, visited){
+    if (!visited)
+      visited = [];
+
+    // Store an array of visited pieces
+    visited.push(piece);
+
+    // Call the callback on the piece
+    callback(piece);
+
+    // Traverse the pieces neighbors
+    for (var i = 0; i < piece.neighbors.length; i++) {
+      var neighbor = piece.neighbors[i];
+
+      // Skip empty neighbors and neighbors we've visited
+      if (!neighbor|| ~visited.indexOf(neighbor))
+        continue;
+
+      traverse(neighbor, callback, visited);
+    }
+
+    return visited;
+
+  };
+
   return Hive.Piece;
 
 });
