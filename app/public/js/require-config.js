@@ -14,8 +14,9 @@ var require = {
   paths: {
     domReady   : 'vendor/domReady-2.0.1',
     underscore : 'vendor/lodash-1.0.0r3.min',
-    jquery     : 'vendor/require-jquery.min',
     backbone   : 'vendor/backbone-amd-0.9.10-min',
+    Piece      : 'models/Piece',
+    GhostPiece : 'models/GhostPiece',
     Hive       : 'models/Hive',
     Piece      : 'models/Piece',
     GhostPiece : 'models/GhostPiece',

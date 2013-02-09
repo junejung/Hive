@@ -1,5 +1,6 @@
 define(function(require) {
-  var Hive        = require('Hive'),
+  var Backbone    = require('backbone'),
+      Hive        = require('Hive'),
       Piece       = require('Piece'),
       GhostPiece  = require('GhostPiece'),
       Queen       = require('Queen'),

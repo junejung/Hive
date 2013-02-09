@@ -1,7 +1,8 @@
+/*jshint expr:true*/
+
 define(function(require) {
   var Hive     = require('Hive'),
       _        = require('underscore');
-
 
   Hive.Piece = function(property){
     this.neighbors = [];
@@ -18,9 +19,9 @@ define(function(require) {
 
   var compliment = function(side) {
 
-    if (side == ABOVE){ return BELOW; } // top of another piece
+    if (side == Hive.sides.ABOVE){ return Hive.sides.BELOW; } // top of another piece
 
-    if (side == BELOW){ return ABOVE; } // under another piece
+    if (side == Hive.sides.BELOW){ return Hive.sides.ABOVE; } // under another piece
 
     if (side >= 3){ return side - 3; }
 
@@ -35,7 +36,7 @@ define(function(require) {
   Hive.Piece.prototype.toString = function(){ return this.name+ ' ('+this.type+')'; };
 
   Hive.Piece.prototype.listAllContiguousNeighbors = function(idHash){
-    // todo: ad id's to all pieces
+    // todo: add id's to all pieces when placed
     // todo: skip ghost pieces
     // todo: rename ghost pieces to empty locations or placeholders
     idHash = idHash || {};
@@ -46,7 +47,7 @@ define(function(require) {
     return idHash;
   };
 
-  Hive.Piece.areAllContiguous = function(){
+  Hive.Piece.prototype.areAllContiguous = function(){
     if(! Hive.Piece.pieces.length){
       return true;
     }
@@ -58,7 +59,6 @@ define(function(require) {
   };
 
   Hive.Piece.prototype.resetNeighbors = function(side){
-    var self = this;
     if (this.type !== null) {
       this.neighbors[0] = null; // -> N
       this.neighbors[1] = null; // -> NE
@@ -76,9 +76,9 @@ define(function(require) {
 
     // Clearing refs of connected neighbors of moving piece
     // Use neuralizer! on previous neighbors
-    _.each(allNeighbors, function(neighbor, s){
-      if(neighbor.type !== null){
-        neighbor.neighbors[compliment(s)] = null;
+    _.each(allNeighbors, function(nBor, s){
+      if(nBor){
+        nBor.neighbors[compliment(s)] = null;
       }
     });
 
