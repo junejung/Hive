@@ -27,7 +27,6 @@ module.exports = function(grunt) {
           jquery       : 'vendor/require-jquery.min',
           underscore   : 'vendor/lodash-1.0.0r3.min',
           backbone     : 'vendor/backbone-amd-0.9.10-min',
-          crafty       : 'vendor/crafty-0.5.3.min',
           io           : 'node_modules/socket.io/node_modules/socket.io-client/dist/socket.io'
         }
       },
