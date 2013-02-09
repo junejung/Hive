@@ -1,7 +1,8 @@
+/*jshint expr:true*/
+
 define(['Hive', 'underscore'], function(Hive, _) {
 
   Hive.Piece = function(property){
-    console.log('prop', property);
     this.neighbors = [];
     this.resetNeighbors();
 
@@ -16,9 +17,9 @@ define(['Hive', 'underscore'], function(Hive, _) {
 
   var compliment = function(side) {
 
-    if (side == ABOVE){ return BELOW; } // top of another piece
+    if (side == Hive.sides.ABOVE){ return Hive.sides.BELOW; } // top of another piece
 
-    if (side == BELOW){ return ABOVE; } // under another piece
+    if (side == Hive.sides.BELOW){ return Hive.sides.ABOVE; } // under another piece
 
     if (side >= 3){ return side - 3; }
 
@@ -56,15 +57,14 @@ define(['Hive', 'underscore'], function(Hive, _) {
   };
 
   Hive.Piece.prototype.resetNeighbors = function(side){
-    var self = this;
     if (this.type !== null) {
-      this.neighbors[0] = new Hive.Piece.GhostPiece(); // -> N
-      this.neighbors[1] = new Hive.Piece.GhostPiece(); // -> NE
-      this.neighbors[2] = new Hive.Piece.GhostPiece(); // -> SE
-      this.neighbors[3] = new Hive.Piece.GhostPiece(); // -> S
-      this.neighbors[4] = new Hive.Piece.GhostPiece(); // -> SW
-      this.neighbors[5] = new Hive.Piece.GhostPiece(); // -> NW
-      this.neighbors[6] = new Hive.Piece.GhostPiece(); // -> ABOVE
+      this.neighbors[0] = null; // -> N
+      this.neighbors[1] = null; // -> NE
+      this.neighbors[2] = null; // -> SE
+      this.neighbors[3] = null; // -> S
+      this.neighbors[4] = null; // -> SW
+      this.neighbors[5] = null; // -> NW
+      this.neighbors[6] = null; // -> ABOVE
       this.neighbors[7] = null; // -> BELOW
     }
   };
@@ -74,9 +74,9 @@ define(['Hive', 'underscore'], function(Hive, _) {
 
     // Clearing refs of connected neighbors of moving piece
     // Use neuralizer! on previous neighbors
-    _.each(allNeighbors, function(neighbor, s){
-      if(neighbor.type !== null){
-        neighbor.neighbors[compliment(s)] = new Hive.Piece.GhostPiece();
+    _.each(allNeighbors, function(nBor, s){
+      if(nBor){
+        nBor.neighbors[compliment(s)] = null;
       }
     });
 

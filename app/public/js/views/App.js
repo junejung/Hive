@@ -8,6 +8,4 @@ define(function(require) {
       Spider      = require('Spider'),
       Grasshopper = require('Grasshopper'),
       Beetle      = require('Beetle');
-      debugger;
-  // a = new Queen({name:'greg', neighbors: [null, null, null]});
 });

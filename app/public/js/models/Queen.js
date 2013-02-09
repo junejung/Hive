@@ -1,15 +1,15 @@
 define(['Piece'], function(Piece) {
 
-  Piece.QueenBee = function() {
+  var QueenBee = function() {
     Piece.apply(this, arguments);
   };
 
   // Inherit from Piece
-  Piece.QueenBee.prototype = Object.create(Piece.prototype);
+  QueenBee.prototype = Object.create(Piece.prototype);
 
-  Piece.QueenBee.prototype.type = 'Queen';
+  QueenBee.prototype.type = 'Queen';
 
-  Piece.QueenBee.prototype.canMove = function(direction) {
+  QueenBee.prototype.canMove = function(direction) {
     // A queen bee can move out of it's current location
 
     // A queen bee can't move onto another piece
@@ -30,7 +30,7 @@ define(['Piece'], function(Piece) {
 
   };
 
-  Piece.QueenBee.prototype.possibleMoves = function() {
+  QueenBee.prototype.possibleMoves = function() {
     // called after QueenBee is selected
     var validDirections = [];
     // loop over QueenBee.neighbors array, call QueenBee.canMove() @ each iteration
@@ -43,7 +43,7 @@ define(['Piece'], function(Piece) {
       // return available neighbors and sides
   };
 
-  Piece.QueenBee.prototype.isSurrounded = function() {
+  QueenBee.prototype.isSurrounded = function() {
     var self = this;
     var currentNeighbors = _.filter(self.neighbors, function(neighbor) {
       if (neighbor && (self.neighbors.indexOf(neighbor) !== 6 || self.neighbors.indexOf(neighbor) !== 7)){
@@ -55,11 +55,11 @@ define(['Piece'], function(Piece) {
     }
   };
 
-  Piece.QueenBee.prototype.move = function () {
+  QueenBee.prototype.move = function () {
     // need to check if movement would detach from main hive cluster
     // move to the valid location
   };
 
-  return Piece.QueenBee;
+  return QueenBee;
 
 });

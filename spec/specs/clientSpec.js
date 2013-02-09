@@ -1,8 +1,8 @@
-var requirejs = require("requirejs");
+var requirejs = require('requirejs');
 // Path to serverside config
-requirejs.config(require("../../app/public/js/tests-config"));
+requirejs.config(require('../../app/public/js/tests-config'));
 
-requirejs(['buster','Hive', 'backbone'], function(buster, Hive, Backbone) {
+requirejs(['buster', 'Hive'], function(buster, Hive) {
   // Set up BDD-style expectations
   var expect = buster.assertions.expect;
   buster.spec.expose();
