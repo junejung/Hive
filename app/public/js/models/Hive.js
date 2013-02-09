@@ -39,8 +39,5 @@ define(function(require) {
   ];
 
   return Hive;
-<<<<<<< HEAD
-
-=======
->>>>>>> dev-no-board-updated
+  
 });
