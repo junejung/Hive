@@ -31,27 +31,55 @@ define(['Hive', 'underscore'], function(Hive, _) {
   //TODO: chagne the formet.. do we even want to have name?
   Hive.Piece.prototype.toString = function(){ return this.name+ ' ('+this.type+')'; };
 
+  Hive.Piece.prototype.listAllContiguousNeighbors = function(idHash){
+    // todo: ad id's to all pieces
+    // todo: skip ghost pieces
+    // todo: rename ghost pieces to empty locations or placeholders
+    idHash = idHash || {};
+    idHash[this.id] = true;
+    _(this.neighbors).each(function(neighbor){
+      idHash[neighbor.id] || neighbor.listAllContiguousNeighbors(idHash);
+    });
+    return idHash;
+  };
+
+  Hive.Piece.areAllContiguous = function(){
+    if(! Hive.Piece.pieces.length){
+      return true;
+    }
+    // todo: keep a list of all pieces
+    var idHash = Hive.Piece.pieces[0].listAllContiguousNeighbors();
+    return _(Hive.Piece.pieces).reduce(function(areAllContiguous, piece){
+      return areAllContiguous && idHash[piece.id];
+    }, true);
+  };
+
   Hive.Piece.prototype.resetNeighbors = function(side){
-    this.neighbors[0] = null; // -> N
-    this.neighbors[1] = null; // -> NE
-    this.neighbors[2] = null; // -> SE
-    this.neighbors[3] = null; // -> S
-    this.neighbors[4] = null; // -> SW
-    this.neighbors[5] = null; // -> NW
-    this.neighbors[6] = null; // -> ABOVE
-    this.neighbors[7] = null; // -> BELOW
+    var self = this;
+    if (this.type !== null) {
+      this.neighbors[0] = new Hive.Piece.GhostPiece({neighbors:[null, null, null, self, null, null, null, null]}); // -> N
+      this.neighbors[1] = new Hive.Piece.GhostPiece({neighbors:[null, null, null, null, self, null, null, null]}); // -> NE
+      this.neighbors[2] = new Hive.Piece.GhostPiece({neighbors:[null, null, null, null, null, self, null, null]}); // -> SE
+      this.neighbors[3] = new Hive.Piece.GhostPiece({neighbors:[self, null, null, null, null, null, null, null]}); // -> S
+      this.neighbors[4] = new Hive.Piece.GhostPiece({neighbors:[null, self, null, null, null, null, null, null]}); // -> SW
+      this.neighbors[5] = new Hive.Piece.GhostPiece({neighbors:[null, null, self, null, null, null, null, null]}); // -> NW
+      this.neighbors[6] = new Hive.Piece.GhostPiece(); // -> ABOVE
+      this.neighbors[7] = null; // -> BELOW
+    }
   };
 
   Hive.Piece.prototype.connectToNeighbor = function(neighbor, side){
     var allNeighbors = this.neighbors;
 
+    // Clearing refs of connected neighbors of moving piece
+    // Use neuralizer! on previous neighbors
     _.each(allNeighbors, function(neighbor, s){
-      if(neighbor !== null){
-        neighbor.neighbors[compliment(s)] = null;
+      if(neighbor.type !== null){
+        neighbor.neighbors[compliment(s)] = new Hive.Piece.GhostPiece();
       }
     });
 
-    this.resetNeibors();
+    this.resetNeighbors();
 
     if(side === BELOW) {
 
@@ -69,12 +97,12 @@ define(['Hive', 'underscore'], function(Hive, _) {
 
   };
 
-  Hive.Piece.prototype.copyNeighbors = function(){
+  Hive.Piece.prototype.copyNeighbors = function(neighbor, side){
     //can't connect to nothing , ourself or if already connected
     if(!neighbor){ return; }
     if(neighbor === this || this.neighbors[side] === neighbor) { return; }
 
-    this.neighbor[side] = neighbor;
+    this.neighbors[side] = neighbor;
 
     neighbor.neighbors[compliment(side)] = this;
 
