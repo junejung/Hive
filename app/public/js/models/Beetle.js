@@ -37,11 +37,6 @@ define(['Piece'], function(Piece) {
 
   };
 
-  Hive.Beetle.prototype.move = function () {
-    // need to check if movement would detach from main hive cluster
-    // move to the valid location
-  };
-
   return Piece.Beetle;
 
 });

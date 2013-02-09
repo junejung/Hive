@@ -1,6 +1,7 @@
 define(['Hive', 'underscore'], function(Hive, _) {
 
   Hive.Piece = function(property){
+    console.log('prop', property);
     this.neighbors = [];
     this.resetNeighbors();
 
@@ -32,7 +33,7 @@ define(['Hive', 'underscore'], function(Hive, _) {
   Hive.Piece.prototype.toString = function(){ return this.name+ ' ('+this.type+')'; };
 
   Hive.Piece.prototype.listAllContiguousNeighbors = function(idHash){
-    // todo: ad id's to all pieces
+    // todo: add id's to all pieces when placed
     // todo: skip ghost pieces
     // todo: rename ghost pieces to empty locations or placeholders
     idHash = idHash || {};
@@ -43,7 +44,7 @@ define(['Hive', 'underscore'], function(Hive, _) {
     return idHash;
   };
 
-  Hive.Piece.areAllContiguous = function(){
+  Hive.Piece.prototype.areAllContiguous = function(){
     if(! Hive.Piece.pieces.length){
       return true;
     }
@@ -57,12 +58,12 @@ define(['Hive', 'underscore'], function(Hive, _) {
   Hive.Piece.prototype.resetNeighbors = function(side){
     var self = this;
     if (this.type !== null) {
-      this.neighbors[0] = new Hive.Piece.GhostPiece({neighbors:[null, null, null, self, null, null, null, null]}); // -> N
-      this.neighbors[1] = new Hive.Piece.GhostPiece({neighbors:[null, null, null, null, self, null, null, null]}); // -> NE
-      this.neighbors[2] = new Hive.Piece.GhostPiece({neighbors:[null, null, null, null, null, self, null, null]}); // -> SE
-      this.neighbors[3] = new Hive.Piece.GhostPiece({neighbors:[self, null, null, null, null, null, null, null]}); // -> S
-      this.neighbors[4] = new Hive.Piece.GhostPiece({neighbors:[null, self, null, null, null, null, null, null]}); // -> SW
-      this.neighbors[5] = new Hive.Piece.GhostPiece({neighbors:[null, null, self, null, null, null, null, null]}); // -> NW
+      this.neighbors[0] = new Hive.Piece.GhostPiece(); // -> N
+      this.neighbors[1] = new Hive.Piece.GhostPiece(); // -> NE
+      this.neighbors[2] = new Hive.Piece.GhostPiece(); // -> SE
+      this.neighbors[3] = new Hive.Piece.GhostPiece(); // -> S
+      this.neighbors[4] = new Hive.Piece.GhostPiece(); // -> SW
+      this.neighbors[5] = new Hive.Piece.GhostPiece(); // -> NW
       this.neighbors[6] = new Hive.Piece.GhostPiece(); // -> ABOVE
       this.neighbors[7] = null; // -> BELOW
     }
