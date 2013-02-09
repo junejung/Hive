@@ -23,7 +23,8 @@
     "socket.io": "~0.9.13",
     "requirejs": "~2.1.4",
     "express": "~3.1.0",
-    "jade": "~0.28.1"
+    "jade": "~0.28.1",
+    "jquery": "~1.8.3"
   },
   "devDependencies": {
     "buster": "~0.6.12",

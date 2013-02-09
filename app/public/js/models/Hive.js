@@ -1,4 +1,6 @@
-define(['backbone'], function(Backbone) {
+define(function(require) {
+  var $        = require('jquery'),
+      Backbone = require('backbone');
 
   var Hive = {};
 
@@ -37,5 +39,8 @@ define(['backbone'], function(Backbone) {
   ];
 
   return Hive;
+<<<<<<< HEAD
 
+=======
+>>>>>>> dev-no-board-updated
 });

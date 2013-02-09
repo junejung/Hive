@@ -12,7 +12,6 @@
 var require = {
   baseUrl: 'js',
   paths: {
-    crafty     : 'vendor/crafty-0.5.3.min',
     domReady   : 'vendor/domReady-2.0.1',
     underscore : 'vendor/lodash-1.0.0r3.min',
     jquery     : 'vendor/require-jquery.min',
