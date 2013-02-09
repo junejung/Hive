@@ -39,5 +39,4 @@ define(function(require) {
   ];
 
   return Hive;
-  
 });

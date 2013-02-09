@@ -154,9 +154,7 @@ define(['Hive', 'underscore'], function(Hive, _) {
     }
 
     return visited;
-
   };
 
   return Hive.Piece;
-
 });

@@ -1,16 +1,17 @@
-define(['Piece'], function(Piece) {
+define(function(require) {
+  var Piece = require('Piece');
 
-  Piece.Ant = function() {
+  var Ant = function() {
     // Call parent constructor
     Piece.apply(this, arguments);
   };
 
   // Inherit from Piece
-  Piece.Ant.prototype = Object.create(Piece.prototype);
+  Ant.prototype = Object.create(Piece.prototype);
 
-  Piece.Ant.prototype.type = 'Ant';
+  Ant.prototype.type = 'Ant';
 
-  Piece.Ant.prototype.canMove = function(direction) {
+  Ant.prototype.canMove = function(direction) {
     // An ant can't move onto another piece
     if(this.neighbors[direction]) return false;
 
@@ -23,9 +24,7 @@ define(['Piece'], function(Piece) {
 
     // Otherwise, we're clear
     return true;
-
   };
 
-  return Piece.Ant;
-
+  return Ant;
 });
