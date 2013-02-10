@@ -12,18 +12,19 @@
 var require = {
   baseUrl: 'js',
   paths: {
+    // Libraries
+    backbone   : 'vendor/backbone-amd-0.9.10-min',
     domReady   : 'vendor/domReady-2.0.1',
     underscore : 'vendor/lodash-1.0.0r3.min',
-    backbone   : 'vendor/backbone-amd-0.9.10-min',
-    Piece      : 'models/Piece',
-    GhostPiece : 'models/GhostPiece',
+
+    // Models
     Hive       : 'models/Hive',
     Piece      : 'models/Piece',
-    GhostPiece : 'models/GhostPiece',
-    Queen      : 'models/Queen',
     Ant        : 'models/Ant',
-    Spider     : 'models/Spider',
+    Beetle     : 'models/Beetle',
+    GhostPiece : 'models/GhostPiece',
     Grasshopper: 'models/Grasshopper',
-    Beetle     : 'models/Beetle'
+    Queen      : 'models/Queen',
+    Spider     : 'models/Spider'
   }
 };

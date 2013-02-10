@@ -11,7 +11,10 @@ define(function(require) {
 
   Beetle.prototype.type = 'Beetle';
 
-  Beetle.prototype.canMove = function(direction) {
+  Beetle.prototype.canMove = function() {
+    // delegate up to Hive.Piece.prototype.canMove and extend its functionality
+    // with further rules.
+
     // Beetle can move anywhere, except if it would leave another piece detached
     var left = direction === 0 ? 5 : direction - 1;
     var right = direction === 5 ? 0 : direction + 1;
