@@ -99,7 +99,8 @@ requirejs(['buster', 'Hive', 'Piece', 'underscore'], function(buster, Hive, Piec
 
 });
 
-    //describe('', function() {
-      //itEventually('', function() {
-      //});
-    //});
+// Describe skeleton. Use this when creating new tests!
+//describe('', function() {
+  //itEventually('', function() {
+  //});
+//});
