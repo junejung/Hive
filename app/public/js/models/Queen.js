@@ -5,7 +5,7 @@ define(function(require) {
     Piece.apply(this, arguments);
   };
 
-  // Inherit from Piece
+  // Inherit from Piece's prototype
   QueenBee.prototype = Object.create(Piece.prototype);
 
   QueenBee.prototype.type = 'Queen';
@@ -23,8 +23,7 @@ define(function(require) {
     // If the left and right are both occupied, we can't move
     if(this.neighbors[left] && this.neighbors[right]) return false;
     // If left and right are both unoccupied, we can't move
-    if(!this.neighbors[left] && !this.neighbors[right]) return false;
-
+    if(!this.neighbors[left] && !this.neighbors[right]) return false; 
 
     // Otherwise, we're clear
     return true;

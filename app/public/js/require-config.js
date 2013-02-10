@@ -19,13 +19,12 @@ var require = {
     Piece      : 'models/Piece',
     GhostPiece : 'models/GhostPiece',
     Hive       : 'models/Hive',
-    Piece      : 'models/Piece',
-    GhostPiece : 'models/GhostPiece',
     Queen      : 'models/Queen',
     Ant        : 'models/Ant',
     Spider     : 'models/Spider',
     Grasshopper: 'models/Grasshopper',
-    Beetle     : 'models/Beetle'
+    Beetle     : 'models/Beetle',
+    kinetic    : 'vendor/kinetic'
   },
   shim: {
     'bootstrap' : ['jquery']

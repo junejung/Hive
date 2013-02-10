@@ -25,9 +25,9 @@ requirejs(['buster', 'Hive', 'Piece'], function(buster, Hive, Piece) {
       testPiece = new Piece({name: 'testPiece'});
     });
 
-    it('should create one piece', function() {
-      expect().toEqual(1);
-    });
+    // it('should create one piece', function() {
+    //   expect().toEqual(1);
+    // });
 
     // it('should be an instance of Backbone Model', function() {
     //   expect(Hive.prototype instanceof Backbone.Model).toEqual(true);
