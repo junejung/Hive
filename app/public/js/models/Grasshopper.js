@@ -11,11 +11,16 @@ define(function(require) {
 
   Grasshopper.prototype.type = 'Grasshopper';
 
-  Grasshopper.prototype.canMove = function(direction) {
-    if (this.neighbors[direction]) {
-      return true;
-    } else {
+  Grasshopper.prototype.canMove = function() {
+    var self = this;
+    var numberOfneighbors = _.compact(self.neighbors.slice(0,6));
+
+    if (self.neighbors[ABOVE]){
       return false;
+    } else if (numberOfneighbors.length > 4) {
+      return true;
+    } else if (numberOfneighbor) {
+
     }
   };
 
@@ -23,6 +28,7 @@ define(function(require) {
   Grasshopper.prototype.possibleMoves = function() {
     // called after Grasshopper is selected
     var validDirections = [];
+
     // loop over Beetle.neighbors array, call Beetle.canMove() @ each iteration
     for (var i = 0; i < this.neighbors.length-2; i++) {
       if(this.canMove(i)){

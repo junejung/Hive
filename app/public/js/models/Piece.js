@@ -12,8 +12,12 @@ define(function(require) {
       this.neighbors = property.neighbors.slice(0);
     }
 
-    if(property.name){
-      this.name = property.name;
+    if(property.id){
+      this.id = property.id;
+    }
+
+    if(property.team){
+      this.team = property.team;
     }
   };
 
