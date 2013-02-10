@@ -14,7 +14,9 @@ var require = {
   paths: {
     // Libraries
     backbone   : 'vendor/backbone-amd-0.9.10-min',
+    bootstrap  : 'vendor/bootstrap.min',
     domReady   : 'vendor/domReady-2.0.1',
+    kinetic    : 'vendor/kinetic',
     underscore : 'vendor/lodash-1.0.0r3.min',
 
     // Models
@@ -26,5 +28,8 @@ var require = {
     Grasshopper: 'models/Grasshopper',
     Queen      : 'models/Queen',
     Spider     : 'models/Spider'
+  },
+  shim: {
+    'bootstrap' : ['jquery']
   }
 };

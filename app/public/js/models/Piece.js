@@ -2,13 +2,18 @@
 
 define(function(require) {
   var Hive     = require('Hive'),
-      _        = require('underscore');
+      _        = require('underscore'),
+      Kinetic  = require('kinetic');
 
 
   Hive.Piece = function(property) {
     // Give the piece a container for neighbors and set all those neighbors to null.
     this.neighbors = [];
     this.resetNeighbors();
+    this.createHex();
+
+    this.hex[x] = property.x;
+    this.hex[y] = property.y;
 
     if (property.neighbors) {
       this.neighbors = property.neighbors.slice(0);
@@ -40,6 +45,18 @@ define(function(require) {
     }
 
     return side + 3;
+  };
+
+  Hive.Piece.prototype.createHex = function(){
+    this.hex = new Kinetic.RegularPolygon(hexStyle);
+  };
+
+  Hive.Piece.prototype.hexStyle = {
+    sides: 6,
+    radius: 50,
+    draggable: true,
+    stroke: 'black',
+    strokeWidth: 4
   };
 
   Hive.Piece.prototype = new Backbone.Model();

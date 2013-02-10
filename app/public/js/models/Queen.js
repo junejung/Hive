@@ -11,9 +11,9 @@ define(function(require) {
   Queen.prototype.type = 'Queen';
 
   Queen.prototype.canMove = function(direction) {
+    // TODO: Inherit from piece and extend.
     // A queen can't move onto another piece
     //if (this.neighbors[direction]) return false;
-
 
     // Otherwise, we're clear
     return true;
