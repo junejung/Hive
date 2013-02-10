@@ -1,38 +1,28 @@
 define(function(require) {
   var Piece = require('Piece');
 
-  var QueenBee = function() {
+  var Queen = function() {
     Piece.apply(this, arguments);
   };
 
-  // Inherit from Piece's prototype
-  QueenBee.prototype = Object.create(Piece.prototype);
+  // Inherit from Piece
+  Hive.Queen.prototype = Object.create(Hive.Piece.prototype);
 
-  QueenBee.prototype.type = 'Queen';
+  Queen.prototype.type = 'Queen';
 
-  QueenBee.prototype.canMove = function(direction) {
-    // A queen bee can move out of it's current location
-
-    // A queen bee can't move onto another piece
-    if(this.neighbors[direction]) return false;
-
-    // Get the left and right directions
-    var left = direction === 0 ? 5 : direction - 1;
-    var right = direction === 5 ? 0 : direction + 1;
-
-    // If the left and right are both occupied, we can't move
-    if(this.neighbors[left] && this.neighbors[right]) return false;
-    // If left and right are both unoccupied, we can't move
-    if(!this.neighbors[left] && !this.neighbors[right]) return false; 
+  Queen.prototype.canMove = function(direction) {
+    // TODO: Inherit from piece and extend.
+    // A queen can't move onto another piece
+    //if (this.neighbors[direction]) return false;
 
     // Otherwise, we're clear
     return true;
   };
 
-  QueenBee.prototype.possibleMoves = function() {
-    // called after QueenBee is selected
+  Queen.prototype.possibleMoves = function() {
+    // called after Queen is selected
     var validDirections = [];
-    // loop over QueenBee.neighbors array, call QueenBee.canMove() @ each iteration
+    // loop over Queen.neighbors array, call Queen.canMove() @ each iteration
     for (var i = 0; i < this.neighbors.length-2; i++) {
       if(this.canMove(i)){
         validDirections.push(i);
@@ -42,7 +32,7 @@ define(function(require) {
     // return available neighbors and sides
   };
 
-  QueenBee.prototype.isSurrounded = function() {
+  Queen.prototype.isSurrounded = function() {
     var self = this;
     var currentNeighbors = _.filter(self.neighbors, function(neighbor) {
       if (neighbor && (self.neighbors.indexOf(neighbor) !== 6 || self.neighbors.indexOf(neighbor) !== 7)){
@@ -54,5 +44,5 @@ define(function(require) {
     }
   };
 
-  return QueenBee;
+  return Queen;
 });

@@ -7,8 +7,8 @@ requirejs(['buster', 'Hive', 'Piece'], function(buster, Hive, Piece) {
   var expect = buster.assertions.expect;
   buster.spec.expose();
 
-  describe('Hive Prototype', function() {
 
+  describe('Hive Prototype', function() {
     it('should be an Object', function() {
       expect(typeof Hive).toEqual("object");
     });
@@ -17,22 +17,5 @@ requirejs(['buster', 'Hive', 'Piece'], function(buster, Hive, Piece) {
       expect(Hive.prototype instanceof Backbone.Model).toEqual(true);
     });
   });
-
-  describe('Hive Piece', function() {
-    var testPiece;
-
-    before(function(){
-      testPiece = new Piece({name: 'testPiece'});
-    });
-
-    // it('should create one piece', function() {
-    //   expect().toEqual(1);
-    // });
-
-    // it('should be an instance of Backbone Model', function() {
-    //   expect(Hive.prototype instanceof Backbone.Model).toEqual(true);
-    // });
-  });
-
 
 });
