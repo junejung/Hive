@@ -53,7 +53,7 @@ define(function(require) {
       if (this.tileStack[type] !== 0){
         this.tileStack[type] = this.tileStack[type] - 1;
         this.collection.add({
-          model : new (this.bugMap[type])({})
+          model : new (this.bugMap[type])({team: this.color})
         });
         this.render();
       }

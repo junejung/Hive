@@ -24,7 +24,6 @@ define(function(require) {
     },
 
     render: function(){
-      // TODO: keep bugs in same position
       var locationKeeper = [];
       var bugsOnStage = this.stage.get('.bug');
       _(bugsOnStage).each(function(bug){

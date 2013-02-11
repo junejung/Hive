@@ -13,23 +13,6 @@ define(function(require) {
       StageView   = require('./StageView'),
       StageCollection = require('../collections/StageCollection');
 
-  // var StageView = Backbone.View.extend({
-  //   initailize: function(){
-  //     // this.collection.on("all", this.render, this);
-  //   },
-
-  //   render: function(){
-  //     var self = this;
-  //     _.each(self.collection, function(piece){
-  //       var hexView = new PieceView({
-  //         model: piece
-  //       });
-  //       hexView.render();
-  //     });
-  //   // add the layer to the stage
-  //   stage.add(layer1);
-  //   }
-  // });
   var makeTileStack = function(){
     return {
       Queen : 1,
@@ -40,8 +23,6 @@ define(function(require) {
     };
   };
 
-  // when game starts
-  // create one empty board collection
   var newStageCollection = new StageCollection();
   var newStageView = new StageView({collection: newStageCollection});
   var newHandViewWhite = new HandView({collection: newStageCollection, color: 'white', tileStack: makeTileStack()});
