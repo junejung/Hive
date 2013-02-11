@@ -7,8 +7,8 @@ define(function(require) {
 
     initialize: function(){
       this.hexStyle = {
-        x: ~~(Math.random() * 1000),
-        y: ~~(Math.random() * 600),
+        x: arguments[0].position ? arguments[0].position.x : 200,
+        y: arguments[0].position ? arguments[0].position.y : 200,
         sides: 6,
         radius: 50,
         draggable: true,
