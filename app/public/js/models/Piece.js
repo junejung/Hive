@@ -2,27 +2,20 @@
 
 define(function(require) {
   var Hive     = require('Hive'),
-      _        = require('underscore'),
-      Kinetic  = require('kinetic');
+      _        = require('underscore');
 
 
   Hive.Piece = function(property) {
     // Give the piece a container for neighbors and set all those neighbors to null.
     this.neighbors = [];
     this.resetNeighbors();
-    this.createHex();
-
-    this.hex[x] = property.x;
-    this.hex[y] = property.y;
 
     if (property.neighbors) {
       this.neighbors = property.neighbors.slice(0);
     }
-
     if (property.id) {
       this.id = property.id;
     }
-
     if (property.team) {
       this.team = property.team;
     }
@@ -33,12 +26,10 @@ define(function(require) {
     if (side === 6) {
       return 7;
     }
-
     // Beneath another piece
     if (side === 7) {
       return 6;
     }
-
     // Prevent overflows
     if (side >= 3) {
       return side - 3;
@@ -47,22 +38,9 @@ define(function(require) {
     return side + 3;
   };
 
-  Hive.Piece.prototype.createHex = function(){
-    this.hex = new Kinetic.RegularPolygon(hexStyle);
-  };
-
-  Hive.Piece.prototype.hexStyle = {
-    sides: 6,
-    radius: 50,
-    draggable: true,
-    stroke: 'black',
-    strokeWidth: 4
-  };
-
   Hive.Piece.prototype = new Backbone.Model();
 
   Hive.Piece.prototype.type = 'Piece';
-
 
   // Takes a side number and returns the number of neighbors the piece at that side
   // shares with this.
