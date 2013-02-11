@@ -20,7 +20,10 @@ define(function(require) {
     },
 
     render: function(){
-      // TODO: clear out the layer before
+      // TODO: keep bugs in same position
+      var bugsOnStage = this.stage.get('.bug');
+      bugsOnStage.apply('remove');
+
       var self = this;
       this.collection.each(function(piece){
         var hexView = new PieceView({
@@ -28,6 +31,7 @@ define(function(require) {
         });
         self.layer.add(hexView.hex);
       });
+      this.layer.draw();
       this.stage.draw();
     }
 

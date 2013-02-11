@@ -13,7 +13,8 @@ define(function(require) {
         radius: 50,
         draggable: true,
         stroke: 'black',
-        strokeWidth: 4
+        strokeWidth: 4,
+        name: 'bug'
       };
       this.hex = new Kinetic.RegularPolygon(this.hexStyle);
     }
