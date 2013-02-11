@@ -1,13 +1,14 @@
 define(function(require) {
-  var $        = require('jquery'),
-      Backbone = require('backbone'),
-      Kinetic  = require('kinetic');
+  var $         = require('jquery'),
+      Backbone  = require('backbone'),
+      PieceView = require('./PieceView'),
+      Kinetic   = require('kinetic');
 
 
   var StageView = Backbone.View.extend({
 
     initialize: function(){
-      this.collection.bind("change", this.render, this);
+      this.collection.bind("all", this.render, this);
       this.stage = new Kinetic.Stage({
         container: 'container',
         width: 1000,
@@ -21,10 +22,9 @@ define(function(require) {
     render: function(){
       // TODO: clear out the layer before
       var self = this;
-      _.each(self.collection, function(piece){
+      this.collection.each(function(piece){
         var hexView = new PieceView({
-          model: piece,
-          hex : new Kinetic.RegularPolygon(piece.hexStyle)
+          model: piece
         });
         self.layer.add(hexView.hex);
       });
