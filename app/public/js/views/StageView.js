@@ -13,9 +13,13 @@ define(function(require) {
         container: 'container',
         width: 1000,
         height: 600,
+        draggable:true
+      });
+
+      this.layer =  new Kinetic.Layer({
         draggable: true
       });
-      this.layer =  new Kinetic.Layer();
+
       this.stage.add(this.layer);
     },
 
@@ -36,7 +40,6 @@ define(function(require) {
         });
         self.layer.add(hexView.hex);
       });
-      this.layer.draw();
       this.stage.draw();
     }
 
