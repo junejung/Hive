@@ -21,13 +21,18 @@ define(function(require) {
 
     render: function(){
       // TODO: keep bugs in same position
+      var locationKeeper = []
       var bugsOnStage = this.stage.get('.bug');
+      _(bugsOnStage).each(function(bug){
+        locationKeeper.push({ x: bug.getX(), y: bug.getY()})
+      });
       bugsOnStage.apply('remove');
 
       var self = this;
-      this.collection.each(function(piece){
+      this.collection.each(function(piece, i){
         var hexView = new PieceView({
-          model: piece
+          model: piece,
+          position: locationKeeper[i]
         });
         self.layer.add(hexView.hex);
       });
