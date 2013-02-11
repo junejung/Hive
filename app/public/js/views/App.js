@@ -7,36 +7,37 @@ define(function(require) {
       Ant         = require('Ant'),
       Spider      = require('Spider'),
       Grasshopper = require('Grasshopper'),
-      Beetle      = require('Beetle');
+      Beetle      = require('Beetle'),
+      HandView    = require('./HandView'),
+      PieceView   = require('./PieceView'),
+      StageView   = require('./StageView'),
+      StageCollection = require('../collections/StageCollection');
 
-  var StageView = Backbone.View.extend({
-    initailize: function(){
-      // this.collection.on("all", this.render, this);
-    },
+  // var StageView = Backbone.View.extend({
+  //   initailize: function(){
+  //     // this.collection.on("all", this.render, this);
+  //   },
 
-    render: function(){
-      var self = this;
-      _.each(self.collection, function(piece){
-        var hexView = new PieceView({
-          model: piece
-        });
-        hexView.render();
-      });
-    // add the layer to the stage
-    stage.add(layer1);
-    }
-  });
+  //   render: function(){
+  //     var self = this;
+  //     _.each(self.collection, function(piece){
+  //       var hexView = new PieceView({
+  //         model: piece
+  //       });
+  //       hexView.render();
+  //     });
+  //   // add the layer to the stage
+  //   stage.add(layer1);
+  //   }
+  // });
 
-  var HandView = Backbone.View.extend({});
 
   // when game starts
   // create one empty board collection
-  // var newStageCollection = new StageCollection()
-  // var newHandCollectionW = new HandCollection([new Queen({team: black..}),...]);
-  // var newHandCollectionB = new HandCollection([new Queen(),...]);
-  // var newStageView = new StageView({collections: newStageCollection});
-  // var newHandViewW = new Handview({collections});
-  // var newHandViewB = new Handview({collections});
+  var newStageCollection = new StageCollection();
+  var newStageView = new StageView({collection: newStageCollection});
+  var newHandViewWhite = new HandView({collection: newStageCollection});
+  var newHandViewBlack = new HandView({collection: newStageCollection});
 
   // create two hand collections
     // each team has 11pieces of bugs

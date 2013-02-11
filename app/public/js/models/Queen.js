@@ -6,7 +6,7 @@ define(function(require) {
   };
 
   // Inherit from Piece
-  Hive.Queen.prototype = Object.create(Hive.Piece.prototype);
+  Queen.prototype = Object.create(Piece.prototype);
 
   Queen.prototype.type = 'Queen';
 

@@ -50,6 +50,7 @@ var SetView = Backbone.View.extend({
     })
     // add the layer to the stage
     stage.add(layer1);
+
   }
 });
 

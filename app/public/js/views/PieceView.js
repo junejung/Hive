@@ -1,10 +1,20 @@
-var PieceView = Backbone.View.extend({
+define(function(require) {
+  var $        = require('jquery'),
+      Backbone = require('backbone'),
+      Kinetic  = require('kinetic');
 
-  initialize: function (argument) {
-    // body...
-  },
+  var PieceView = Backbone.View.extend({
 
-  render: function(){
+    initialize: function(){
+      this.hexStyle = {
+        sides: 6,
+        radius: 50,
+        draggable: true,
+        stroke: 'black',
+        strokeWidth: 4
+      };
+    }
+  });
 
-  }
+  return PieceView;
 });
