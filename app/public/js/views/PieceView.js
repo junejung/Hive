@@ -33,8 +33,6 @@ define(function(require) {
           radius: 50,
           draggable: true,
           image: self.img,
-          stroke: self.team,
-          strokeWidth: 2,
           name: 'bug'
         });
         self.layer.add(bugbug);
