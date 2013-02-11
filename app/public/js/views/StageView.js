@@ -15,6 +15,7 @@ define(function(require) {
         draggable: true
       });
       this.layer =  new Kinetic.Layer();
+      this.stage.add(this.layer);
     },
 
     render: function(){
@@ -27,7 +28,7 @@ define(function(require) {
         });
         self.layer.add(hexView.hex);
       });
-      this.layer.draw();
+      this.stage.draw();
     }
 
   });
