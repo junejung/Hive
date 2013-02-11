@@ -21,10 +21,10 @@ define(function(require) {
 
     render: function(){
       // TODO: keep bugs in same position
-      var locationKeeper = []
+      var locationKeeper = [];
       var bugsOnStage = this.stage.get('.bug');
       _(bugsOnStage).each(function(bug){
-        locationKeeper.push({ x: bug.getX(), y: bug.getY()})
+        locationKeeper.push({ x: bug.getX(), y: bug.getY()});
       });
       bugsOnStage.apply('remove');
 
