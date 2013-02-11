@@ -16,7 +16,7 @@ define(function(require) {
         draggable: false
       });
 
-
+      // TODO : figure out how to make the bgImg have low z-index
       // // background image non-sense hoop jumping for kinetic
       // this.bgLayer = new Kinetic.Layer({
       //   draggable: false
@@ -60,9 +60,12 @@ define(function(require) {
       this.collection.each(function(piece, i){
         var hexView = new PieceView({
           model: piece,
-          position: locationKeeper[i]
+          position: locationKeeper[i],
+          layer: self.layer
         });
-        self.layer.add(hexView.hex);
+        // TODO: find out how to use kinetic img and polygon together
+        // self.layer.add(hexView.hex);
+        // self.layer.add(hexView.bugbug);
       });
       this.stage.draw();
     }
