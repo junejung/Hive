@@ -11,10 +11,35 @@ define(function(require) {
       this.collection.bind("all", this.render, this);
       this.stage = new Kinetic.Stage({
         container: 'container',
-        width: 1000,
-        height: 600,
-        draggable:true
+        width:  document.width,
+        height: document.height,
+        draggable: false
       });
+
+
+      // // background image non-sense hoop jumping for kinetic
+      // this.bgLayer = new Kinetic.Layer({
+      //   draggable: false
+      // });
+      //
+      // var backgroundImg,
+      //     self = this;
+      // var bgImg = new Image();
+      // bgImg.width = this.stage.getWidth();
+      // bgImg.height = this.stage.getHeight();
+      // bgImg.onload = function() {
+      //   backgroundImg = new Kinetic.Image({
+      //     image: bgImg,
+      //     name: 'bgImg',
+      //     width: self.stage.getWidth(),
+      //     height: self.stage.getHeight(),
+      //     draggable: false
+      //   });
+      //   self.bgLayer.add(backgroundImg);
+      //   self.stage.add(self.bgLayer);
+      //   self.stage.draw();
+      // };
+      // bgImg.src = 'img/hiveBorder.png';
 
       this.layer =  new Kinetic.Layer({
         draggable: true
@@ -24,7 +49,6 @@ define(function(require) {
     },
 
     render: function(){
-      // TODO: keep bugs in same position
       var locationKeeper = [];
       var bugsOnStage = this.stage.get('.bug');
       _(bugsOnStage).each(function(bug){
