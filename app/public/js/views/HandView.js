@@ -1,3 +1,5 @@
+/*jshint multistr:true*/
+
 define(function(require) {
   var $             = require('jquery'),
       Backbone      = require('backbone'),
@@ -11,7 +13,7 @@ define(function(require) {
   var HandView = Backbone.View.extend({
 
     tagName: 'div',
-// spans need White/Black id to differ themselves
+
     template: _.template("<span id='Queen'>Queen :<%=Queen%></span>\
       <span id='Spider'>Spider :<%=Spider%></span>\
       <span id='Beetle'>Beetle :<%=Beetle%></span>\
@@ -26,31 +28,35 @@ define(function(require) {
 
     events:{
       'click' : function(e) {
-        // not sure if 'this' is pointing to right reference
-        console.log(e.target);
         this.placePiece(e.target.id);
       }
     },
 
     render: function(){
+      // TODO: refactor maybe?
       if(this.color === "white"){
         $('div#white-player').append(this.$el.html(this.template(this.tileStack)));
       }else if(this.color === "black"){
         $('div#black-player').append(this.$el.html(this.template(this.tileStack)));
       }
-      // return this.$el;
+    },
+
+    bugMap: {
+      'Queen'       : Queen,
+      'Beetle'      : Beetle,
+      'Spider'      : Spider,
+      'Ant'         : Ant,
+      'Grasshopper' : Grasshopper
     },
 
     placePiece: function(type){
-      this.tileStack[type] = this.tileStack[type] - 1;
-      // this.collection.add({
-      //   model: new type(),
-      //   //gameId: length of collection
-      // });
-      // if (this.tileStack[type] === 0){
-      //   //make it unclickable
-      // }
-      this.render();
+      if (this.tileStack[type] !== 0){
+        this.tileStack[type] = this.tileStack[type] - 1;
+        this.collection.add({
+          model : new (this.bugMap[type])({})
+        });
+        this.render();
+      }
     }
   });
 

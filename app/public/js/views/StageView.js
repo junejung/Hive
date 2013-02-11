@@ -10,7 +10,7 @@ define(function(require) {
       this.collection.bind("change", this.render, this);
       this.stage = new Kinetic.Stage({
         container: 'container',
-        width: 1400,
+        width: 1000,
         height: 600,
         draggable: true
       });

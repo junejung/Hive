@@ -30,20 +30,22 @@ define(function(require) {
   //   stage.add(layer1);
   //   }
   // });
-  var tileStack = {
-    Queen : 1,
-    Spider : 2,
-    Beetle : 2,
-    Ant : 3,
-    Grasshopper: 3
+  var makeTileStack = function(){
+    return {
+      Queen : 1,
+      Spider : 2,
+      Beetle : 2,
+      Ant : 3,
+      Grasshopper: 3
+    };
   };
 
   // when game starts
   // create one empty board collection
   var newStageCollection = new StageCollection();
   var newStageView = new StageView({collection: newStageCollection});
-  var newHandViewWhite = new HandView({collection: newStageCollection, color: 'white', tileStack: tileStack});
-  var newHandViewBlack = new HandView({collection: newStageCollection, color: 'black', tileStack: tileStack});
+  var newHandViewWhite = new HandView({collection: newStageCollection, color: 'white', tileStack: makeTileStack()});
+  var newHandViewBlack = new HandView({collection: newStageCollection, color: 'black', tileStack: makeTileStack()});
 
   // create two hand collections
     // each team has 11pieces of bugs
