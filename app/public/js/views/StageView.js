@@ -13,7 +13,7 @@ define(function(require) {
         container: 'container',
         width:  document.width,
         height: document.height,
-        draggable: false
+        draggable: true
       });
 
       // TODO : figure out how to make the bgImg have low z-index
