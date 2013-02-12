@@ -12,15 +12,24 @@
 var require = {
   baseUrl: 'js',
   paths: {
-    crafty     : 'vendor/crafty-0.5.3.min',
-    domReady   : 'vendor/domReady-2.0.1',
-    underscore : 'vendor/lodash-1.0.0r3.min',
+    // Libraries
     backbone   : 'vendor/backbone-amd-0.9.10-min',
-    Bug        : 'models/Bug',
-    Queen      : 'models/Queen',
-    Soldier    : 'models/Soldier',
-    Spider     : 'models/Spider',
+    bootstrap  : 'vendor/bootstrap.min',
+    domReady   : 'vendor/domReady-2.0.1',
+    kinetic    : 'vendor/kinetic',
+    underscore : 'vendor/lodash-1.0.0r3.min',
+
+    // Models
+    Hive       : 'models/Hive',
+    Piece      : 'models/Piece',
+    Ant        : 'models/Ant',
+    Beetle     : 'models/Beetle',
+    GhostPiece : 'models/GhostPiece',
     Grasshopper: 'models/Grasshopper',
-    Beetle     : 'models/Beetle'
+    Queen      : 'models/Queen',
+    Spider     : 'models/Spider'
+  },
+  shim: {
+    'bootstrap' : ['jquery']
   }
 };

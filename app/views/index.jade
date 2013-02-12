@@ -1,5 +1,17 @@
 extends layout
 
 block content
-  h1 LOL
-  p HAI
+  div#intro-modal.modal.hide.fade
+    div.modal-header
+      h3 Welcome to Free Hive Online!
+    div.modal-body
+      p Hive is an awesome tile boardgame that has been re-made here using modern browser technologies.
+      a(href="http://www.gen42.com/downloads/rules/Hive_Rules.pdf") Official Hive Instructions
+      p
+      a(href="http://www.amazon.com/Gen42-Games-5513656-Hive-Original/dp/B000EN5ZLW") If you love Hive as much as we do consider purchasing it!
+      p
+      a.btn(href="#", data-dismiss="modal") Close
+  div#player-hands
+    div#white-player
+    div#black-player
+  div#container

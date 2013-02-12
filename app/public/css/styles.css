@@ -1,0 +1,19 @@
+#container{
+  background: url('../img/background.jpg');
+  background-size: 100% 100%;
+}
+
+#player-hands{
+  background-color: darkgray;
+}
+
+#black-player{
+  color: black;
+  display: inline-block;
+  float: right;
+}
+
+#white-player{
+  color: white;
+  display: inline-block;
+}
