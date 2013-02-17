@@ -73,23 +73,32 @@ define(function(require) {
   };
 
   // Returns how many non-null neighbors are attached to this piece
-  Hive.Piece.prototype.validNeighbors = function() {
-    var count = 0;
-    _.each(this.neighbors, function(neighbor) {
-      if (neighbor) { count++; }
-    });
-    return count;
+  Hive.Piece.prototype.horizontalNeighbors = function() {
+    var neighborCount = 0;
+    // Loop through and exclude top and bottom.
+    for (var i = 0; i <= 5; i++) {
+      if (this.neighbors[i]) {
+        neighborCount++;
+      }
+    }
+
+    return neighborCount;
   };
 
   Hive.Piece.prototype.canMove = function() {
-    var result;
+    var result = false;
 
-    var validNeighbors = this.validNeighbors();
+    var horizontalNeighbors = this.horizontalNeighbors();
 
     // If the piece has zero neighbors, it can't move. This won't happen in
     // practice. but just in case some weird shit goes down...
-    if (validNeighbors === 0) {
+    if (horizontalNeighbors === 0) {
       throw new Error("A solitary piece can't move anywhere!");
+    }
+
+    // A piece can't move if it has another piece on top of it
+    if (this.neighbors[6]) {
+      return false;
     }
 
     // TODO: Remove the piece from piece.pieces for this simulation. Something like:
@@ -104,15 +113,13 @@ define(function(require) {
     //}
 
     // If the piece only has a single neighbor, it can move
-    if (validNeighbors === 1) {
+    if (horizontalNeighbors === 1) {
       return true;
     }
 
     // If a piece has two neighbors, those neighbors must be neighbors of each
     // other for this to be able to move.
-    if (validNeighbors === 2) {
-      result = false;
-
+    if (horizontalNeighbors === 2) {
       // Loop through all neighbors
       _.each(this.neighbors, function(neighbor, side) {
         // Test if neighbors exist and if that neighbor shares a common neighbor
@@ -126,9 +133,7 @@ define(function(require) {
     }
 
     // If a single neighbor has a compliment, cannot move.
-    if (validNeighbors === 3) {
-      result = false;
-
+    if (horizontalNeighbors === 3) {
       // Loop through all neighbors
       _.each(this.neighbors, function(neighbor, side) {
         // Test if a neighbor exists and if that neighbor has no compliments.
@@ -142,9 +147,7 @@ define(function(require) {
 
     // If a single neighbor is isolated (shares no common neighbors with this) or if
     // all four neighbors have a compliment, then this cannot move.
-    if (validNeighbors === 4) {
-      result = false;
-
+    if (horizontalNeighbors === 4) {
       _.each(this.neighbors, function(neighbor, side) {
         // If any given piece shares two neighbors with this, that means that one
         // of this's neighbors is isolated and this cannot move.
@@ -221,6 +224,7 @@ define(function(require) {
     // Reset this piece's neighbors so we can cleanly reattach them below
     this.resetNeighbors();
 
+    // If we're trying to connect a piece under another piece, reject it as invalid
     if (side === 7) {
       throw new Error("A piece can't move under another piece!");
     }

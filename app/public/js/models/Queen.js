@@ -2,23 +2,32 @@ define(function(require) {
   var Piece = require('Piece');
 
   var Queen = function() {
-    Piece.apply(this, arguments);
+    Piece.call(this, arguments);
   };
 
   // Inherit from Piece
   Queen.prototype = Object.create(Piece.prototype);
+  Queen.prototype.constructor = Piece;
 
   Queen.prototype.type = 'Queen';
 
-  Queen.prototype.canMove = function(direction) {
-    // TODO: Inherit from piece and extend.
-    // A queen can't move onto another piece
-    //if (this.neighbors[direction]) return false;
+  Queen.prototype.canMove = function() {
+    // Run all of Piece's tests...
+    var allowed = Piece.prototype.canMove.apply(this, arguments);
 
-    // Otherwise, we're clear
-    return true;
+    // ...and add a few of our own!
+    return result = allowed || function() {
+      var validNeighbors = this.validNeighbors();
+
+      // If an edge piece has five or six neighbors, it cannot move
+      if (validNeighbors >= 5) {
+        return false;
+      }
+
+    }();
   };
 
+  // TODO: Verify this works.
   Queen.prototype.possibleMoves = function() {
     // called after Queen is selected
     var validDirections = [];
@@ -33,12 +42,14 @@ define(function(require) {
   };
 
   Queen.prototype.isSurrounded = function() {
-    var self = this;
-    var currentNeighbors = _.filter(self.neighbors, function(neighbor) {
-      if (neighbor && (self.neighbors.indexOf(neighbor) !== 6 || self.neighbors.indexOf(neighbor) !== 7)){
+    // Get a list of all horizontal neighbors. This excludes neighbors above and
+    // below the queen.
+    var currentNeighbors = _.filter(this.neighbors, function(neighbor) {
+      if (neighbor && (this.neighbors.indexOf(neighbor) !== 6 || this.neighbors.indexOf(neighbor) !== 7)){
         return neighbor;
       }
     });
+
     if (currentNeighbors.length === 6) {
       console.log('GAME OVER!');
     }
