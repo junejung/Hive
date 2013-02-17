@@ -32,7 +32,7 @@ requirejs(['buster', 'Hive', 'Piece', 'underscore'], function(buster, Hive, Piec
     describe('resetNeighbors', function() {
       it("should reset a piece's neighbors to null", function() {
         // First, check to be sure the piece has all neighbor slots full
-        expect(fullPiece.validNeighbors()).toEqual(7);
+        expect(fullPiece.horizontalNeighbors()).toEqual(6);
 
         // Reset all the neighbors and test if they're all null
         fullPiece.resetNeighbors();
@@ -48,7 +48,7 @@ requirejs(['buster', 'Hive', 'Piece', 'underscore'], function(buster, Hive, Piec
         piece.connectToNeighbor(stubNeighbors[0], 0);
 
         // Make sure it's been connected and that it's the only piece that was connected
-        expect(piece.validNeighbors()).toEqual(1);
+        expect(piece.horizontalNeighbors()).toEqual(1);
         expect(piece.neighbors[0]).toBe(stubNeighbors[0]);
       });
     });

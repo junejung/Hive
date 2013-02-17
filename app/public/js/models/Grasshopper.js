@@ -12,16 +12,6 @@ define(function(require) {
   Grasshopper.prototype.type = 'Grasshopper';
 
   Grasshopper.prototype.canMove = function() {
-    var self = this;
-    var numberOfneighbors = _.compact(self.neighbors.slice(0,6));
-
-    if (self.neighbors[ABOVE]){
-      return false;
-    } else if (numberOfneighbors.length > 4) {
-      return true;
-    } else if (numberOfneighbor) {
-
-    }
   };
 
   // TODO: figure out what to return to show valid moves to player
